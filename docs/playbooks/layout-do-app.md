@@ -84,23 +84,22 @@ export const NAVEGACAO: { grupo: string; itens: ItemNav[] }[] = [
 
 ```tsx
 // app/(app)/layout.tsx
+import { Suspense } from "react";
 import { SidebarProvider, SidebarInset } from "@/components/ui/sidebar";
 import { AppSidebar } from "@/components/app-sidebar";
 import { AppTopbar } from "@/components/app-topbar";
 import { requireUser } from "@/lib/supabase/require-user";
 
-export default async function AppLayout({
+export default function AppLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
-  // A moldura é área logada: confere a sessão aqui, uma vez.
-  // Cada página continua conferindo a sua — o proxy não é autorização.
-  const { user } = await requireUser();
-
   return (
     <SidebarProvider>
-      <AppSidebar email={String(user.email)} />
+      <Suspense fallback={<div className="w-(--sidebar-width) border-r" />}>
+        <SidebarDoUsuario />
+      </Suspense>
       <SidebarInset>
         <AppTopbar />
         <main className="flex flex-1 flex-col gap-8 p-6">{children}</main>
@@ -108,7 +107,18 @@ export default async function AppLayout({
     </SidebarProvider>
   );
 }
+
+async function SidebarDoUsuario() {
+  const { user } = await requireUser();
+  return <AppSidebar email={String(user.email)} />;
+}
 ```
+
+> **Não tire o `Suspense` daqui.** Este projeto usa `cacheComponents` (PPR) do
+> Next 16. Se você ler sessão ou cookie direto no corpo do layout, o `npm run
+> build` falha com *"uncached or runtime data during prerendering"* — e o erro
+> só aparece no build, não no `npm run dev`. Isolando a parte que depende do
+> usuário, o resto da moldura sai pronto do cache e a página fica mais rápida.
 
 ## Passo 6 — Marcar o item ativo
 
