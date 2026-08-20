@@ -25,7 +25,7 @@ export const PUBLIC_PREFIXES: readonly string[] = [
 export const LOGIN_PATH = "/auth/login";
 
 /** Para onde mandar o usuario logo apos entrar no sistema. */
-export const AFTER_LOGIN_PATH = "/protected";
+export const AFTER_LOGIN_PATH = "/dashboard";
 
 export function isPublicPath(pathname: string): boolean {
   if (PUBLIC_ROUTES.includes(pathname)) return true;
