@@ -24,6 +24,13 @@ consiga abrir qualquer sistema e reconhecer a estrutura.
 | Avisos | `sonner` |
 | Ícones | `lucide-react` |
 | Tema claro/escuro | `next-themes` |
+| Sidebar, migalha, abas | `sidebar`, `breadcrumb`, `tabs` do shadcn |
+
+## Aparência
+
+Definida em [`ESTILO.md`](ESTILO.md), com telas de referência em
+[`examples/`](examples/). Resumo: painel administrativo neutro, sem cor de
+marca, cor só para indicar estado.
 
 ## Como os dados andam
 
@@ -44,11 +51,14 @@ Formulário → Server Action → requireUser() → zod → Supabase → revalid
 ## Estrutura de pastas
 
 ```
-app/                    rotas (cada pasta é uma URL)
-  <entidade>/
-    page.tsx            listagem (Server Component)
-    actions.ts          Server Actions ("use server")
-    <entidade>-form.tsx formulário ("use client")
+app/
+  auth/                 login e cadastro (sem moldura)
+  (app)/                telas logadas (com sidebar e barra de cima)
+    layout.tsx          a moldura
+    <entidade>/
+      page.tsx          listagem (Server Component)
+      actions.ts        Server Actions ("use server")
+      <entidade>-form.tsx  formulário ("use client")
 components/
   ui/                   shadcn — não edite à mão, use o CLI
   *.tsx                 componentes do sistema

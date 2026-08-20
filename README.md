@@ -75,6 +75,7 @@ consegue ver o cadastro de outro. **Isso é obrigatório antes de publicar.**
 |---|---|
 | [`AGENTS.md`](AGENTS.md) | As regras que a IA segue. Leia se quiser entender as decisões |
 | [`docs/SEGURANCA.md`](docs/SEGURANCA.md) | **Leia este.** Explica sem jargão o que protege seus dados |
+| [`docs/ESTILO.md`](docs/ESTILO.md) | A aparência padrão dos sistemas do grupo |
 | [`docs/STACK.md`](docs/STACK.md) | As tecnologias usadas e por quê |
 | [`docs/DECISOES.md`](docs/DECISOES.md) | Preencha conforme for decidindo. O time de devs lê primeiro |
 | [`docs/playbooks/`](docs/playbooks/) | Passo a passo de cada tarefa comum |
