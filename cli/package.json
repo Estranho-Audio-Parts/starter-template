@@ -1,0 +1,39 @@
+{
+  "name": "@SEU-ESCOPO/criar-sistema",
+  "version": "1.0.0",
+  "description": "Template padrao para sistemas internos: Next.js 16 + Supabase, com regras de IA, RLS obrigatorio e layout de painel pronto",
+  "type": "module",
+  "bin": {
+    "criar-sistema": "index.mjs"
+  },
+  "files": [
+    "index.mjs",
+    "template"
+  ],
+  "scripts": {
+    "sync": "node ../scripts/sync-template.mjs",
+    "prepack": "node ../scripts/sync-template.mjs"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SEU-USUARIO/SEU-REPO.git",
+    "directory": "cli"
+  },
+  "homepage": "https://github.com/SEU-USUARIO/SEU-REPO#readme",
+  "bugs": "https://github.com/SEU-USUARIO/SEU-REPO/issues",
+  "keywords": [
+    "template",
+    "nextjs",
+    "supabase",
+    "shadcn",
+    "starter",
+    "rls"
+  ],
+  "license": "MIT"
+}

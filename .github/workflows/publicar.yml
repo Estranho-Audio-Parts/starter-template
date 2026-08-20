@@ -1,0 +1,38 @@
+name: Publicar no npm
+
+# Dispara ao subir uma tag de versao:
+#   cd cli && npm version minor && git push --follow-tags
+on:
+  push:
+    tags: ["v*"]
+
+jobs:
+  publicar:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      # Autentica no npm pela identidade do proprio workflow (trusted
+      # publishing) e assina o selo de proveniencia. Nao existe token.
+      id-token: write
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 22
+          cache: npm
+          registry-url: https://registry.npmjs.org
+
+      # O Node 22 traz o npm 10, que nao fala OIDC. Trusted publishing
+      # exige npm >= 11.5.1.
+      - run: npm install -g npm@latest
+
+      - run: npm ci
+
+      # Nao publica template quebrado.
+      - run: npm run check
+
+      # O prepack do cli/package.json roda o sync sozinho.
+      - name: Publicar
+        run: npm publish --access public --provenance
+        working-directory: cli

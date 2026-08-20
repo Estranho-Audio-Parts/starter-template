@@ -1,0 +1,25 @@
+name: CI
+
+# Confere lint, TypeScript e build em todo push.
+# Se ficar vermelho, nao entregue para o time de devs sem antes corrigir.
+on:
+  push:
+    branches: ["**"]
+  pull_request:
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 22
+          cache: npm
+
+      - run: npm ci
+
+      # As variaveis do Supabase nao entram aqui: sao embutidas no build e o
+      # projeto compila sem elas. Configure-as na Vercel, nao no CI.
+      - run: npm run check

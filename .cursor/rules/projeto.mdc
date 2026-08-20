@@ -1,0 +1,28 @@
+---
+description: Regras obrigatorias do template padrao da equipe
+alwaysApply: true
+---
+
+Leia o arquivo `AGENTS.md` na raiz do projeto e siga integralmente todas as
+regras que estao nele. Ele e a fonte unica de verdade sobre stack, seguranca e
+padroes de codigo deste projeto.
+
+Pontos que nunca podem ser violados (detalhados no AGENTS.md):
+
+1. Toda tabela criada precisa de `alter table ... enable row level security` e
+   pelo menos uma policy, na mesma migration.
+2. A chave `service_role` nunca aparece em codigo de cliente, e nada secreto usa
+   o prefixo `NEXT_PUBLIC_`.
+3. Mudanca de schema so acontece via arquivo em `supabase/migrations/`.
+4. Toda Server Action valida a entrada com zod no servidor.
+5. Toda pagina protegida revalida a sessao — o proxy nao e autorizacao.
+6. Nada de `any`: rode `npm run db:types` depois de mexer no banco.
+
+Aparencia: todo sistema segue `docs/ESTILO.md` — painel administrativo neutro,
+sem cor de marca, graficos em escala de cinza, cor apenas para estado. A moldura
+e o painel ja vem implementados nesse padrao em `app/(app)/` e `components/`;
+leia e reaproveite. Antes de criar componente do zero, rode
+`npx shadcn@latest add <nome>`.
+
+Para tarefas comuns, siga o passo a passo em `docs/playbooks/`.
+Ao terminar, rode `npm run check`.

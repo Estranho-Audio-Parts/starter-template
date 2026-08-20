@@ -14,6 +14,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import { AFTER_LOGIN_PATH } from "@/lib/auth/routes";
 import { useState } from "react";
 
 export function SignUpForm({
@@ -44,7 +45,7 @@ export function SignUpForm({
         email,
         password,
         options: {
-          emailRedirectTo: `${window.location.origin}/protected`,
+          emailRedirectTo: `${window.location.origin}${AFTER_LOGIN_PATH}`,
         },
       });
       if (error) throw error;
