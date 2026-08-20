@@ -1,0 +1,34 @@
+name: Publicar no npm
+
+# Dispara ao subir uma tag de versao:
+#   cd cli && npm version minor && git push --follow-tags
+on:
+  push:
+    tags: ["v*"]
+
+jobs:
+  publicar:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write # necessario para o selo de proveniencia do npm
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 22
+          cache: npm
+          registry-url: https://registry.npmjs.org
+
+      - run: npm ci
+
+      # Nao publica template quebrado.
+      - run: npm run check
+
+      # O prepack do cli/package.json roda o sync sozinho.
+      - name: Publicar
+        run: npm publish --access public --provenance
+        working-directory: cli
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

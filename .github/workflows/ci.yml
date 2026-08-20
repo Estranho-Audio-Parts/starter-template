@@ -1,0 +1,32 @@
+name: CI
+
+on:
+  push:
+    branches: ["**"]
+  pull_request:
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 22
+          cache: npm
+
+      - run: npm ci
+
+      # lint + typecheck + build. O build funciona sem as variaveis do Supabase:
+      # a home cai no estado "falta configurar" em vez de quebrar.
+      - run: npm run check
+
+      # O template precisa gerar um projeto que funciona. Se este passo quebrar,
+      # o template esta quebrado para todo mundo que criar projeto a partir dele.
+      - name: Gerar um projeto e conferir que ele builda
+        run: |
+          node scripts/sync-template.mjs
+          mkdir -p /tmp/saida && cd /tmp/saida
+          node "$GITHUB_WORKSPACE/cli/index.mjs" projeto-de-teste
+          cd projeto-de-teste && npm run check
