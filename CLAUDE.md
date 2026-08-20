@@ -20,9 +20,9 @@ Use a skill em vez de improvisar. Elas seguem os mesmos playbooks de
 
 ## Aparência
 
-O padrão visual está em `docs/ESTILO.md`, com telas de referência em
-`docs/examples/`. Abra as imagens antes de desenhar qualquer tela — você
-consegue lê-las, e elas dizem mais que a descrição escrita.
+O padrão visual está em `docs/ESTILO.md`. A moldura e o painel já vêm
+implementados nesse padrão: leia `app/(app)/`, `components/app-sidebar.tsx` e
+`components/card-indicador.tsx` antes de criar tela nova, e reaproveite.
 
 ## Lembretes
 

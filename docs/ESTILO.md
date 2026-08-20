@@ -2,11 +2,16 @@
 
 Todo sistema do grupo tem a mesma cara. Esta página descreve qual é.
 
-A referência está em [`docs/examples/`](examples/) — seis telas reais.
-**Abra as imagens antes de desenhar qualquer coisa.** Elas valem mais que
-qualquer descrição, e você consegue lê-las.
+**A melhor referência é o próprio projeto.** A moldura e o painel já vêm
+prontos neste padrão — leia antes de escrever qualquer tela:
 
-Referência online: <https://shadcnblocks-admin.vercel.app/ecommerce/dashboard-1>
+- `app/(app)/layout.tsx` — a moldura (sidebar + barra de cima)
+- `app/(app)/dashboard/page.tsx` — cabeçalho de página e grade de indicadores
+- `components/card-indicador.tsx` — o cartão de KPI, já com as regras aplicadas
+- `components/app-sidebar.tsx` — navegação, item ativo, rodapé do usuário
+
+Referência visual online:
+<https://shadcnblocks-admin.vercel.app/ecommerce/dashboard-1>
 
 O resumo em uma frase: **painel administrativo neutro, denso de informação, sem
 cor de marca.** Preto, branco e cinza. Cor só quando ela significa alguma coisa.
@@ -124,8 +129,7 @@ Regras:
 - Em linha: `grid gap-4 sm:grid-cols-2 lg:grid-cols-4`.
 
 Existe a variante de um cartão único dividido por bordas verticais
-(`divide-x`) — veja `example-1.png`. Use quando os indicadores forem do mesmo
-assunto.
+(`divide-x`). Use quando os indicadores forem do mesmo assunto.
 
 ---
 
@@ -167,7 +171,7 @@ Use `npx shadcn@latest add chart` (Recharts com os wrappers do shadcn).
 
 ## 5. Tabelas
 
-É onde o sistema interno vive. Veja `example-4.png` e `example-6.png`.
+É onde o sistema interno vive.
 
 Estrutura de cima para baixo:
 
@@ -211,8 +215,8 @@ tabela, é "Pago" no detalhe também.
 
 ## 7. Formulários
 
-Veja `example-5.png`. Formulário longo **não** é uma pilha de campos: é uma
-sequência de cartões por assunto.
+Formulário longo **não** é uma pilha de campos: é uma sequência de cartões por
+assunto.
 
 ```tsx
 <Card>

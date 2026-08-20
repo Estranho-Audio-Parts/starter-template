@@ -4,8 +4,10 @@ A "moldura" é a sidebar + a barra de cima que aparecem em todas as telas
 logadas. Monte **uma vez**, logo no começo do projeto, antes da primeira tela de
 verdade. Depois disso, toda tela nova só preenche o miolo.
 
-**Antes de começar, leia [`docs/ESTILO.md`](../ESTILO.md) e abra as imagens de
-[`docs/examples/`](../examples/).** É exatamente essa a aparência a alcançar.
+**Antes de começar, leia [`docs/ESTILO.md`](../ESTILO.md).** Boa parte da
+moldura já vem pronta no template — leia `app/(app)/layout.tsx`,
+`components/app-sidebar.tsx` e `components/app-topbar.tsx` antes de mexer.
+Este playbook serve para adaptá-la ao seu sistema, não para começar do zero.
 
 ## Passo 1 — Instalar os componentes
 

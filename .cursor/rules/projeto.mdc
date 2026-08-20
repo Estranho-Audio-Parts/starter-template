@@ -19,9 +19,10 @@ Pontos que nunca podem ser violados (detalhados no AGENTS.md):
 6. Nada de `any`: rode `npm run db:types` depois de mexer no banco.
 
 Aparencia: todo sistema segue `docs/ESTILO.md` — painel administrativo neutro,
-sem cor de marca, graficos em escala de cinza, cor apenas para estado. As telas
-de referencia estao em `docs/examples/`; abra as imagens antes de desenhar.
-Antes de criar componente do zero, rode `npx shadcn@latest add <nome>`.
+sem cor de marca, graficos em escala de cinza, cor apenas para estado. A moldura
+e o painel ja vem implementados nesse padrao em `app/(app)/` e `components/`;
+leia e reaproveite. Antes de criar componente do zero, rode
+`npx shadcn@latest add <nome>`.
 
 Para tarefas comuns, siga o passo a passo em `docs/playbooks/`.
 Ao terminar, rode `npm run check`.

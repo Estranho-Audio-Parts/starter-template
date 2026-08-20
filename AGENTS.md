@@ -121,8 +121,10 @@ As tabelas são tipadas em `lib/supabase/database.types.ts`. Criou tabela? Rode
 Todo sistema do grupo tem a mesma cara: **painel administrativo neutro, denso de
 informação, sem cor de marca.**
 
-A referência completa está em `docs/ESTILO.md`, e as telas de exemplo em
-`docs/examples/` — **abra as imagens antes de desenhar qualquer coisa.**
+A referência completa está em `docs/ESTILO.md`. **A moldura e o painel já vêm
+implementados nesse padrão** — leia `app/(app)/layout.tsx`,
+`app/(app)/dashboard/page.tsx` e `components/card-indicador.tsx` antes de criar
+tela nova, e reaproveite em vez de recriar.
 
 O essencial, que não se negocia:
 
