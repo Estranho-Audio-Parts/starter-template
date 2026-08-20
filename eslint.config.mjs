@@ -18,6 +18,17 @@ const eslintConfig = [
   },
   ...coreWebVitals,
   ...typescript,
+  {
+    // Codigo gerado pelo shadcn (`npx shadcn@latest add ...`). O CLI reescreve
+    // estes arquivos, entao corrigir a mao volta a quebrar na proxima vez.
+    // Desligamos apenas as duas regras que o codigo do shadcn viola, e apenas
+    // aqui — o codigo que a equipe escreve continua sendo cobrado por elas.
+    files: ["components/ui/**", "hooks/use-mobile.ts"],
+    rules: {
+      "react-hooks/purity": "off",
+      "react-hooks/set-state-in-effect": "off",
+    },
+  },
 ];
 
 export default eslintConfig;
