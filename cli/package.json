@@ -1,7 +1,7 @@
 {
-  "name": "@grupo/criar-sistema",
+  "name": "@SEU-ESCOPO/criar-sistema",
   "version": "1.0.0",
-  "description": "Cria um sistema interno a partir do template padrao do grupo (Next.js + Supabase)",
+  "description": "Template padrao para sistemas internos: Next.js 16 + Supabase, com regras de IA, RLS obrigatorio e layout de painel pronto",
   "type": "module",
   "bin": {
     "criar-sistema": "index.mjs"
@@ -18,8 +18,22 @@
     "node": ">=20"
   },
   "publishConfig": {
-    "access": "restricted"
+    "access": "public"
   },
-  "keywords": ["template", "nextjs", "supabase"],
-  "license": "UNLICENSED"
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SEU-USUARIO/SEU-REPO.git",
+    "directory": "cli"
+  },
+  "homepage": "https://github.com/SEU-USUARIO/SEU-REPO#readme",
+  "bugs": "https://github.com/SEU-USUARIO/SEU-REPO/issues",
+  "keywords": [
+    "template",
+    "nextjs",
+    "supabase",
+    "shadcn",
+    "starter",
+    "rls"
+  ],
+  "license": "MIT"
 }
