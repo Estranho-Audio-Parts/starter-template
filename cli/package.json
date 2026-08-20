@@ -1,0 +1,25 @@
+{
+  "name": "@grupo/criar-sistema",
+  "version": "1.0.0",
+  "description": "Cria um sistema interno a partir do template padrao do grupo (Next.js + Supabase)",
+  "type": "module",
+  "bin": {
+    "criar-sistema": "index.mjs"
+  },
+  "files": [
+    "index.mjs",
+    "template"
+  ],
+  "scripts": {
+    "sync": "node ../scripts/sync-template.mjs",
+    "prepack": "node ../scripts/sync-template.mjs"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "publishConfig": {
+    "access": "restricted"
+  },
+  "keywords": ["template", "nextjs", "supabase"],
+  "license": "UNLICENSED"
+}
