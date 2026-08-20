@@ -13,8 +13,10 @@ import {
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import { useState } from "react";
+import { safeRedirectPath } from "@/lib/auth/safe-redirect";
+import { AFTER_LOGIN_PATH } from "@/lib/auth/routes";
 
 export function LoginForm({
   className,
@@ -25,6 +27,7 @@ export function LoginForm({
   const [error, setError] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const router = useRouter();
+  const searchParams = useSearchParams();
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -38,8 +41,10 @@ export function LoginForm({
         password,
       });
       if (error) throw error;
-      // Update this route to redirect to an authenticated route. The user already has an active session.
-      router.push("/protected");
+      // Volta para onde a pessoa tentou ir antes de cair no login.
+      // safeRedirectPath impede que "?next=" aponte para fora do sistema.
+      router.push(safeRedirectPath(searchParams.get("next"), AFTER_LOGIN_PATH));
+      router.refresh();
     } catch (error: unknown) {
       setError(error instanceof Error ? error.message : "An error occurred");
     } finally {
