@@ -13,9 +13,16 @@ Use a skill em vez de improvisar. Elas seguem os mesmos playbooks de
 |---|---|
 | `/comecar` | Primeira configuração do projeto (conectar Supabase, criar `.env.local`) |
 | `/nova-tabela` | Criar ou alterar tabela no banco, com RLS e tipos |
+| `/layout-do-app` | Montar a moldura do sistema (sidebar + topo). Uma vez por projeto |
 | `/nova-tela` | Criar tela de listagem + cadastro + edição (CRUD completo) |
 | `/revisar-seguranca` | Checklist antes de entregar para o time de devs |
 | `/publicar` | Colocar o sistema no ar |
+
+## Aparência
+
+O padrão visual está em `docs/ESTILO.md`, com telas de referência em
+`docs/examples/`. Abra as imagens antes de desenhar qualquer tela — você
+consegue lê-las, e elas dizem mais que a descrição escrita.
 
 ## Lembretes
 

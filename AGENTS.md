@@ -116,7 +116,34 @@ As tabelas são tipadas em `lib/supabase/database.types.ts`. Criou tabela? Rode
 
 ---
 
-## 4. Fluxos prontos
+## 4. Estilo visual
+
+Todo sistema do grupo tem a mesma cara: **painel administrativo neutro, denso de
+informação, sem cor de marca.**
+
+A referência completa está em `docs/ESTILO.md`, e as telas de exemplo em
+`docs/examples/` — **abra as imagens antes de desenhar qualquer coisa.**
+
+O essencial, que não se negocia:
+
+- **Base neutra.** Preto, branco e cinza. Não existe cor primária de marca.
+  Cor só aparece quando significa estado: verde positivo, vermelho negativo,
+  âmbar atenção, azul em andamento, cinza inativo.
+- **Gráficos em escala de cinza**, não coloridos (`docs/ESTILO.md`, seção 4).
+- **Moldura fixa**: sidebar à esquerda com grupos e ícones, barra superior com
+  busca e tema, migalha de navegação, título e subtítulo de página, uma única
+  ação principal por tela.
+- **Número de destaque sempre com comparação** e com `tabular-nums`.
+- **Estado sempre em badge**, nunca texto solto.
+- **Nunca cor fixa** (`bg-white`, `#fff`): só tokens (`bg-background`,
+  `text-muted-foreground`). Senão o modo escuro quebra.
+- **Não invente componente que o shadcn já tem.** Rode
+  `npx shadcn@latest add <nome>` antes de escrever do zero — vale principalmente
+  para `sidebar`, `chart`, `breadcrumb`, `tabs` e `command`.
+
+---
+
+## 5. Fluxos prontos
 
 Antes de começar uma dessas tarefas, **leia o playbook inteiro** e siga o passo
 a passo. Eles existem para a saída sair padronizada.
@@ -124,16 +151,18 @@ a passo. Eles existem para a saída sair padronizada.
 | Tarefa | Playbook |
 |---|---|
 | Configurar o projeto pela primeira vez | `docs/playbooks/comecar.md` |
+| Montar a moldura do sistema (sidebar + topo) | `docs/playbooks/layout-do-app.md` |
 | Criar tabela nova no banco | `docs/playbooks/nova-tabela.md` |
 | Criar tela de cadastro/listagem (CRUD) | `docs/playbooks/nova-tela.md` |
 | Revisar antes de entregar para os devs | `docs/playbooks/revisar-seguranca.md` |
 | Publicar o sistema | `docs/playbooks/publicar.md` |
 
-Referência: `docs/STACK.md` (stack detalhada) e `docs/SEGURANCA.md`.
+Referência: `docs/STACK.md` (stack detalhada), `docs/ESTILO.md` (aparência) e
+`docs/SEGURANCA.md`.
 
 ---
 
-## 5. Como se comportar
+## 6. Como se comportar
 
 - **Não peça escolha técnica ao usuário.** Ele não sabe se prefere Drizzle ou
   Supabase client. Decida pela tabela da seção 1 e siga.
