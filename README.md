@@ -9,7 +9,7 @@ está no teclado é a IA: regras que ela lê sozinha, playbooks para as tarefas
 comuns, e um verificador que barra o erro mais caro antes que ele aconteça.
 
 ```bash
-npx @SEU-ESCOPO/criar-sistema meu-sistema
+npx @estranho-audio-parts/criar-sistema meu-sistema
 ```
 
 ## O modelo de trabalho

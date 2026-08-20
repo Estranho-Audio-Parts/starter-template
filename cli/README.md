@@ -1,4 +1,4 @@
-# @SEU-ESCOPO/criar-sistema
+# @estranho-audio-parts/criar-sistema
 
 CLI que cria um projeto novo a partir do template padrão do grupo.
 
@@ -10,7 +10,7 @@ O template é a raiz deste repositório. O script `scripts/sync-template.mjs`
 copia a raiz para `cli/template/`, que é o que vai dentro do pacote npm.
 
 ```
-raiz do repo  ──sync──▶  cli/template/  ──npm publish──▶  npx @SEU-ESCOPO/criar-sistema
+raiz do repo  ──sync──▶  cli/template/  ──npm publish──▶  npx @estranho-audio-parts/criar-sistema
 ```
 
 Um arquivo só existe em um lugar: a raiz. Nunca edite `cli/template/` à mão —
@@ -18,11 +18,16 @@ o sync apaga e recria a pasta.
 
 ## Antes de publicar pela primeira vez
 
-1. **Troque o escopo.** Em `cli/package.json`, o nome está como
-   `@SEU-ESCOPO/criar-sistema`. Troque `@SEU-ESCOPO` pelo escopo real da organização no
-   npm. Atualize também as menções em `README.md` e `cli/README.md`.
-2. **Crie a organização no npm** (ou configure o registry privado da organização).
-3. `npm login`.
+1. **Crie a organização `estranho-audio-parts` no npm** — o nome da org é o
+   escopo do pacote. Plano Free basta para pacote público.
+2. `npm login`, com 2FA ativo na conta.
+3. Publique a `1.0.0` à mão (veja abaixo). Só a primeira vai assim: o trusted
+   publisher é configurado na página do pacote, que ainda não existe.
+
+Se você forkou este repositório para outra organização, troque `@estranho-audio-parts`
+em `cli/package.json`, `README.md` e `cli/README.md`, e ajuste `repository`,
+`homepage` e `bugs` em `cli/package.json` — o `--provenance` compara esse
+`repository` com o repo que rodou o Actions e falha se não bater.
 
 O pacote está com `"access": "public"`. Pacote privado no npm exige plano pago;
 se precisar disso, troque para `"restricted"` ou use um registry interno.
@@ -39,8 +44,8 @@ git push --follow-tags     # dispara .github/workflows/publicar.yml
 
 Não exige secret nenhum. O workflow se autentica no npm pela identidade do
 próprio Actions (*trusted publishing*), configurada uma vez na página do pacote:
-**Settings → Trusted Publisher → GitHub Actions**, apontando para este
-repositório e para `publicar.yml`.
+**Settings → Trusted Publisher → GitHub Actions**, com owner
+`Estranho-Audio-Parts`, repositório `starter-template` e workflow `publicar.yml`.
 
 Como essa configuração mora na página do pacote, a **primeira** versão vai à mão
 (veja abaixo). Da segunda em diante é só a tag.

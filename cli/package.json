@@ -1,5 +1,5 @@
 {
-  "name": "@SEU-ESCOPO/criar-sistema",
+  "name": "@estranho-audio-parts/criar-sistema",
   "version": "1.0.0",
   "description": "Template padrao para sistemas internos: Next.js 16 + Supabase, com regras de IA, RLS obrigatorio e layout de painel pronto",
   "type": "module",
@@ -22,11 +22,11 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/SEU-USUARIO/SEU-REPO.git",
+    "url": "git+https://github.com/Estranho-Audio-Parts/starter-template.git",
     "directory": "cli"
   },
-  "homepage": "https://github.com/SEU-USUARIO/SEU-REPO#readme",
-  "bugs": "https://github.com/SEU-USUARIO/SEU-REPO/issues",
+  "homepage": "https://github.com/Estranho-Audio-Parts/starter-template#readme",
+  "bugs": "https://github.com/Estranho-Audio-Parts/starter-template/issues",
   "keywords": [
     "template",
     "nextjs",
