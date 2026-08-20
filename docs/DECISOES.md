@@ -11,7 +11,7 @@ Mantenha curto e em português simples.
 
 ## Quem usa
 
-> (Quem faz login. Só gente da empresa? Qual empresa do grupo? Clientes de fora?)
+> (Quem faz login. Só gente de dentro? De qual área ou empresa? Clientes externos?)
 
 ## Como o acesso foi configurado
 

@@ -1,6 +1,6 @@
 # Stack padrão
 
-Toda escolha aqui já está tomada. O objetivo é que qualquer pessoa do grupo
+Toda escolha aqui já está tomada. O objetivo é que qualquer pessoa da equipe
 consiga abrir qualquer sistema e reconhecer a estrutura.
 
 ## Base

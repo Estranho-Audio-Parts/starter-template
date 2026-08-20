@@ -25,6 +25,7 @@ const SO_DO_TEMPLATE = [
   "docs/examples/", // capturas de referencia, 3,4 MB — o projeto ja nasce no padrao
   ".github/", // o CI do template; o projeto ganha o seu, mais simples
   "LICENSE", // a licenca e do template, nao do sistema do funcionario
+  "README.md", // o README da raiz e a vitrine publica; o projeto ganha o seu
 ];
 
 const versionados = execFileSync("git", ["ls-files", "-z"], {
@@ -43,6 +44,13 @@ for (const arquivo of versionados) {
   await mkdir(dirname(alvo), { recursive: true });
   await cp(join(raiz, arquivo), alvo);
 }
+
+// O README do projeto fala com o funcionario que vai construir o sistema.
+// O da raiz fala com quem chega no repositorio publico — sao publicos diferentes.
+await cp(
+  join(raiz, "cli", "extras", "README-do-projeto.md"),
+  join(destino, "README.md"),
+);
 
 // O projeto gerado ganha o proprio CI, mais simples que o do template.
 await mkdir(join(destino, ".github", "workflows"), { recursive: true });

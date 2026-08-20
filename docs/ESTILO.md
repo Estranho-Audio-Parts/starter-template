@@ -1,6 +1,6 @@
 # Estilo visual padrão
 
-Todo sistema do grupo tem a mesma cara. Esta página descreve qual é.
+Todo sistema da equipe tem a mesma cara. Esta página descreve qual é.
 
 **A melhor referência é o próprio projeto.** A moldura e o painel já vêm
 prontos neste padrão — leia antes de escrever qualquer tela:

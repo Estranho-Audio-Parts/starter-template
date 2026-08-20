@@ -1,6 +1,6 @@
 # Regras do projeto
 
-Você está construindo um **sistema interno** em cima do template padrão do grupo.
+Você está construindo um **sistema interno** em cima do template padrão da equipe.
 Estas regras não são sugestões. Elas existem para que qualquer desenvolvedor da
 equipe consiga assumir este projeto depois sem reescrever tudo.
 
@@ -118,7 +118,7 @@ As tabelas são tipadas em `lib/supabase/database.types.ts`. Criou tabela? Rode
 
 ## 4. Estilo visual
 
-Todo sistema do grupo tem a mesma cara: **painel administrativo neutro, denso de
+Todo sistema da equipe tem a mesma cara: **painel administrativo neutro, denso de
 informação, sem cor de marca.**
 
 A referência completa está em `docs/ESTILO.md`. **A moldura e o painel já vêm

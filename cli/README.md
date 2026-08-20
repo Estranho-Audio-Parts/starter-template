@@ -1,4 +1,4 @@
-# @grupo/criar-sistema
+# @SEU-ESCOPO/criar-sistema
 
 CLI que cria um projeto novo a partir do template padrão do grupo.
 
@@ -10,7 +10,7 @@ O template é a raiz deste repositório. O script `scripts/sync-template.mjs`
 copia a raiz para `cli/template/`, que é o que vai dentro do pacote npm.
 
 ```
-raiz do repo  ──sync──▶  cli/template/  ──npm publish──▶  npx @grupo/criar-sistema
+raiz do repo  ──sync──▶  cli/template/  ──npm publish──▶  npx @SEU-ESCOPO/criar-sistema
 ```
 
 Um arquivo só existe em um lugar: a raiz. Nunca edite `cli/template/` à mão —
@@ -19,20 +19,30 @@ o sync apaga e recria a pasta.
 ## Antes de publicar pela primeira vez
 
 1. **Troque o escopo.** Em `cli/package.json`, o nome está como
-   `@grupo/criar-sistema`. Troque `@grupo` pelo escopo real da organização no
+   `@SEU-ESCOPO/criar-sistema`. Troque `@SEU-ESCOPO` pelo escopo real da organização no
    npm. Atualize também as menções em `README.md` e `cli/README.md`.
-2. **Crie a organização no npm** (ou configure o registry privado do grupo).
+2. **Crie a organização no npm** (ou configure o registry privado da organização).
 3. `npm login`.
 
-O pacote está com `"access": "restricted"` — publica privado. Se a organização
-não tiver plano pago, mude para `"public"` ou use um registry interno.
+O pacote está com `"access": "public"`. Pacote privado no npm exige plano pago;
+se precisar disso, troque para `"restricted"` ou use um registry interno.
 
 ## Publicar uma versão
 
+O GitHub Actions publica sozinho quando você sobe uma tag:
+
 ```bash
 cd cli
-npm version patch     # ou minor / major
-npm publish
+npm version minor          # cria o commit e a tag
+git push --follow-tags     # dispara .github/workflows/publicar.yml
+```
+
+Exige o secret `NPM_TOKEN` configurado no repositório.
+
+Para publicar à mão:
+
+```bash
+cd cli && npm publish
 ```
 
 O `prepack` roda o sync sozinho, então o template publicado é sempre o estado
