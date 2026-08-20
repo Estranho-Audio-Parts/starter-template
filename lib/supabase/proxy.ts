@@ -1,7 +1,7 @@
 import { createServerClient } from "@supabase/ssr";
 import { NextResponse, type NextRequest } from "next/server";
 import { hasEnvVars } from "../utils";
-import { isPublicPath, LOGIN_PATH } from "../auth/routes";
+import { isPublicPath, LOGIN_PATH, AFTER_LOGIN_PATH } from "../auth/routes";
 import type { Database } from "./database.types";
 
 export async function updateSession(request: NextRequest) {
@@ -41,6 +41,15 @@ export async function updateSession(request: NextRequest) {
   // muito dificil de debugar.
   const { data } = await supabase.auth.getClaims();
   const user = data?.claims;
+
+  // A raiz nao e tela. Sistema interno abre no login, ou ja dentro se a pessoa
+  // tem sessao. O texto de "como configurar" mora no README, nao numa pagina.
+  if (request.nextUrl.pathname === "/") {
+    const url = request.nextUrl.clone();
+    url.pathname = user ? AFTER_LOGIN_PATH : LOGIN_PATH;
+    url.search = "";
+    return NextResponse.redirect(url);
+  }
 
   // Padrao fechado: tudo exige login, menos o que estiver em lib/auth/routes.ts.
   if (!user && !isPublicPath(request.nextUrl.pathname)) {
