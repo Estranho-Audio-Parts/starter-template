@@ -1,6 +1,6 @@
 {
   "name": "@eap-starter-template/criar-sistema",
-  "version": "1.1.0",
+  "version": "1.1.2",
   "description": "Template padrao para sistemas internos: Next.js 16 + Supabase, com regras de IA, RLS obrigatorio e layout de painel pronto",
   "type": "module",
   "bin": {

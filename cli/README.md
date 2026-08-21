@@ -37,10 +37,17 @@ se precisar disso, troque para `"restricted"` ou use um registry interno.
 O GitHub Actions publica sozinho quando você sobe uma tag:
 
 ```bash
-cd cli
-npm version minor          # cria o commit e a tag
+cd cli && npm version minor --no-git-tag-version && cd ..
+V=$(node -p "require('./cli/package.json').version")
+git commit -qam "chore(cli): $V"
+git tag -a "v$V" -m "v$V"
 git push --follow-tags     # dispara .github/workflows/publicar.yml
 ```
+
+Atencao: `cli/` nao e a raiz do repositorio git, e por isso o `npm version`
+sozinho **nao cria commit nem tag** — ele so altera o `cli/package.json`. A tag
+tem de ser criada a mao, como acima, e precisa ser anotada (`-a`), porque
+`--follow-tags` ignora tag leve.
 
 Exige o secret `NPM_TOKEN` no repositório: um granular access token com
 *Bypass 2FA* marcado e escrita no escopo `eap-starter-template`.
