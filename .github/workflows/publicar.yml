@@ -11,9 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: read
-      # Autentica no npm pela identidade do proprio workflow (trusted
-      # publishing) e assina o selo de proveniencia. Nao existe token.
-      id-token: write
+      id-token: write # necessario para o selo de proveniencia do npm
     steps:
       - uses: actions/checkout@v5
 
@@ -22,10 +20,6 @@ jobs:
           node-version: 22
           cache: npm
           registry-url: https://registry.npmjs.org
-
-      # O Node 22 traz o npm 10, que nao fala OIDC. Trusted publishing
-      # exige npm >= 11.5.1.
-      - run: npm install -g npm@latest
 
       - run: npm ci
 
@@ -36,3 +30,5 @@ jobs:
       - name: Publicar
         run: npm publish --access public --provenance
         working-directory: cli
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

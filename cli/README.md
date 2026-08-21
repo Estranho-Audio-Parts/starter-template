@@ -42,13 +42,8 @@ npm version minor          # cria o commit e a tag
 git push --follow-tags     # dispara .github/workflows/publicar.yml
 ```
 
-Não exige secret nenhum. O workflow se autentica no npm pela identidade do
-próprio Actions (*trusted publishing*), configurada uma vez na página do pacote:
-**Settings → Trusted Publisher → GitHub Actions**, com owner
-`Estranho-Audio-Parts`, repositório `starter-template` e workflow `publicar.yml`.
-
-Como essa configuração mora na página do pacote, a **primeira** versão vai à mão
-(veja abaixo). Da segunda em diante é só a tag.
+Exige o secret `NPM_TOKEN` no repositório: um granular access token com
+*Bypass 2FA* marcado e escrita no escopo `eap-starter-template`.
 
 Para publicar à mão:
 
